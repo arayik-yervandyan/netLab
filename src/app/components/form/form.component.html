@@ -1,0 +1,42 @@
+<div class="form">
+	<h2>Форма для тебя</h2>
+<form *ngIf="formGroup" [formGroup]="formGroup">
+			<div class="form-group" [class.success]="formGroup.get('user').valid && formGroup.get('user').touched" [class.haserror]="formGroup.get('user').invalid && formGroup.get('user').touched">
+				<input class="form-control" id="first-name" formControlName="user"  name="user">
+				<label for="first-name">Представьтесь пожалуйста</label>
+				<span class="validation-status-icon"></span>
+			</div>
+			<div class="form-group" [class.success]="formGroup.get('email').valid && formGroup.get('email').touched"  [class.haserror]="formGroup.get('email').invalid && formGroup.get('email').touched">
+				<input class="form-control" id="email" formControlName="email" type="" name="email">
+				<label for="email">Введите ваш e-mail</label>
+				<span class="validation-status-icon"></span>
+			</div>
+
+			<div 
+			#dropdownElement 
+			class="custom-select form-group" 
+			[class.success]="formGroup.get('messageType').valid && formGroup.get('messageType').touched"  
+			[class.haserror]="formGroup.get('messageType').invalid && formGroup.get('messageType').touched" 
+			(click)="toggleDropdown(!isDropdownOpened, true)">
+ 				<select id="tema" formControlName="messageType"  name="messageType"> 
+    				<option style="color: #9B99AA" value="0">Тема сообщения</option>
+				    <option *ngFor="let messageType of messageTypes" [value]="messageType.id">{{messageType.label}}</option>
+  				</select>
+  				<div class="select-selected">{{selectedMessageType}}</div>
+  				<div [class.select-hide]="!isDropdownOpened" class="select-items">
+  					<div (click)="selectItem(messageType)" *ngFor="let messageType of messageTypes" >{{messageType.label}}</div>
+  					<!-- 
+  					<div class="same-as-selected">Тема 1</div><div>Тема 2</div><div>Тема 3</div><div>Тема 4</div> -->
+  				</div>
+			</div>
+			<div class="form-group textarea" [class.success]="formGroup.get('text').valid && formGroup.get('text').touched"  [class.haserror]="formGroup.get('text').invalid && formGroup.get('text').touched">
+				<textarea id="text" formControlName="text"  name="text">
+				</textarea>
+				<label for="text">Введите сообщение</label>	
+			</div>
+			<div class="action">
+				<button (click)='resetForm($event)' class="cancel">Сбросить</button>
+				<button (click)='saveForm($event)' class="send">Отправить</button>
+			</div>
+		</form>	
+</div>

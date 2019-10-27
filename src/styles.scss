@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'LetoSans';
+    src: url('./assets/LetoSans-Bold.woff2') format('woff2'),
+        url('./assets/LetoSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+  font-family: LetoSans;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

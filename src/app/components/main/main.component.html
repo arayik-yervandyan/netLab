@@ -1,0 +1,15 @@
+<span>Form data:</span>
+
+<ng-container *ngIf="!formData" >
+	Форма пока не заполнена.
+</ng-container>
+
+<ng-container *ngIf="formData" >
+	<div>Фио: {{formData.user}}</div>	
+	<div>E-mail: {{formData.email}}</div>	
+	<div>Тема: {{formData.messageType}}</div>
+</ng-container>
+
+<button class="edit" (click)='navigateToForm()'>
+	{{formData ? "Изменить" : "Заполнить форму"}}
+</button>
